@@ -1,11 +1,11 @@
-id: clark
-name: Clark
+id: sonic_theme_clark
+name: ClarkQAQ
 author:
     name: Clark
     website: https://www.clarkqwq.top
-description: ClarkQAQ
-# logo: https://avatars1.githubusercontent.com/u/1811819?s=460&v=4
-# website: https://github.com/go-sonic/default-theme-anatole
-# repo: https://github.com/go-sonic/default-theme-anatole
+description: ClarkQAQ 自用主题
+logo: https://avatars.githubusercontent.com/u/40785118?v=4
+website: https://github.com/ClarkQAQ/sonic_theme_clark
+repo: https://github.com/ClarkQAQ/sonic_theme_clark
 version: 1.0.0
 require: 1.0.5
