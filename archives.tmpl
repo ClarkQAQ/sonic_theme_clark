@@ -1,17 +1,17 @@
-{{- define "clark/archives" -}}
+{{- define "sonic_theme_clark/archives" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>归档 - {{ .blog_title }}</title>
-    {{ template "clark/module/head" . }}
+    {{ template "sonic_theme_clark/module/head" . }}
 </head>
 
-{{ template "clark/module/style" . }}
+{{ template "sonic_theme_clark/module/style" . }}
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
 
             <div class="posts">
@@ -56,7 +56,7 @@
                 {{end}}
             </div>
 
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

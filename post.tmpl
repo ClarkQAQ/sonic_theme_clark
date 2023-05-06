@@ -1,13 +1,13 @@
-{{- define "clark/post" -}}
+{{- define "sonic_theme_clark/post" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>{{ .post.Title }} - {{ .blog_title }}</title>
-    {{ template "clark/module/head" . }}
+    {{ template "sonic_theme_clark/module/head" . }}
 </head>
 
-{{ template "clark/module/style" . }}
+{{ template "sonic_theme_clark/module/style" . }}
 
 <style>
     .post-content img {
@@ -19,7 +19,7 @@
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
             <article class="post">
                 <h1 class="post-title"><a href="{{ .post.FullPath }}">{{ .post.Title }}</a></h1>
@@ -92,7 +92,7 @@
                 </div>
                 {{end}}
             </article>
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

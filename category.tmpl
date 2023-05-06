@@ -1,13 +1,13 @@
-{{- define "clark/category" -}}
+{{- define "sonic_theme_clark/category" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>分类: {{.category.Name}} - {{ .blog_title }}</title>
-    {{ template "clark/module/head" .}}
+    {{ template "sonic_theme_clark/module/head" .}}
 </head>
 
-{{ template "clark/module/style" .}}
+{{ template "sonic_theme_clark/module/style" .}}
 
 <style>
     .introduction {
@@ -30,7 +30,7 @@
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
             <div class="posts">
                 <div class="index-content framed">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                {{ template "clark/module/post-entry" . }}
+                {{ template "sonic_theme_clark/module/post-entry" . }}
                 {{if (gt .posts.Pages 1)}}
                 {{$pagination:=(categoryPostsPagination .posts.PageNum .posts.Pages 3)}}
                 <div class="pagination">
@@ -74,7 +74,7 @@
                 </div>
                 {{end}}
             </div>
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

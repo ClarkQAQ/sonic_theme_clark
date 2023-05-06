@@ -1,13 +1,13 @@
-{{- define "clark/search" -}}
+{{- define "sonic_theme_clark/search" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>搜索: {{.tag.Name}} - {{ .blog_title }}</title>
-    {{ template "clark/module/head" .}}
+    {{ template "sonic_theme_clark/module/head" .}}
 </head>
 
-{{ template "clark/module/style" .}}
+{{ template "sonic_theme_clark/module/style" .}}
 
 <style>
     .introduction {
@@ -30,7 +30,7 @@
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
             <div class="posts">
                 <div class="index-content framed">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 {{if .posts.Content}}
-                {{ template "clark/module/post-entry" . }}
+                {{ template "sonic_theme_clark/module/post-entry" . }}
                 {{if (gt .posts.Pages 1)}}
                 {{$pagination:=(searchPagination .posts.PageNum .posts.Pages 3)}}
                 <div class="pagination">
@@ -81,7 +81,7 @@
                 
 
             </div>
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

@@ -1,13 +1,13 @@
-{{- define "clark/links" -}}
+{{- define "sonic_theme_clark/links" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>{{ .settings.links_alias }} - {{ .blog_title }}</title>
-    {{ template "clark/module/head" . }}
+    {{ template "sonic_theme_clark/module/head" . }}
 </head>
 
-{{ template "clark/module/style" . }}
+{{ template "sonic_theme_clark/module/style" . }}
 
 <style>
     .introduction {
@@ -38,7 +38,7 @@
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
             <div class="posts">
                 {{$links:=listLinks}}
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

@@ -1,17 +1,17 @@
-{{- define "clark/sheet" -}}
+{{- define "sonic_theme_clark/sheet" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>{{.sheet.Title}} - {{ .blog_title }}</title>
-    {{ template "clark/module/head" . }}
+    {{ template "sonic_theme_clark/module/head" . }}
 </head>
 
-{{ template "clark/module/style" . }}
+{{ template "sonic_theme_clark/module/style" . }}
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
             <article class="post">
                 <h1 class="post-title"><a href="{{ .post.FullPath }}">{{ .sheet.Title }}</a></h1>
@@ -30,7 +30,7 @@
                     {{noescape .sheet.OriginalContent}}
                 </div>
             </article>
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

@@ -1,13 +1,13 @@
-{{- define "clark/index" -}}
+{{- define "sonic_theme_clark/index" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>首页 - {{ .blog_title }}</title>
-    {{ template "clark/module/head" .}}
+    {{ template "sonic_theme_clark/module/head" .}}
 </head>
 
-{{ template "clark/module/style" .}}
+{{ template "sonic_theme_clark/module/style" .}}
 
 <style>
     /* 让  index-avatar 垂直居中 */
@@ -20,7 +20,7 @@
 
 <body>
     <div class="container">
-        {{template "clark/module/header" .}}
+        {{template "sonic_theme_clark/module/header" .}}
         <div class="content">
             {{ if and .settings.hello_content_switch (le .posts.PageNum 0)}}
             <div class="index-content framed">
@@ -38,7 +38,7 @@
             </div>
             {{end}}
             <div class="posts">
-                {{ template "clark/module/post-entry" . }}
+                {{ template "sonic_theme_clark/module/post-entry" . }}
                 {{if (gt .posts.Pages 1)}}
                 {{$pagination:=(indexPagination .posts.PageNum .posts.Pages 3)}}
                 <div class="pagination">
@@ -63,7 +63,7 @@
                 </div>
                 {{end}}
             </div>
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

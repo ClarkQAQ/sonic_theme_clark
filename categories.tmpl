@@ -1,13 +1,13 @@
-{{- define "clark/categories" -}}
+{{- define "sonic_theme_clark/categories" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>分类列表 - {{ .blog_title }}</title>
-    {{ template "clark/module/head" . }}
+    {{ template "sonic_theme_clark/module/head" . }}
 </head>
 
-{{ template "clark/module/style" . }}
+{{ template "sonic_theme_clark/module/style" . }}
 
 <style>
     .categories {
@@ -64,7 +64,7 @@
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
             <div class="posts">
                 <div class="index-content framed">
@@ -88,7 +88,7 @@
                 </div>
             </div>
 
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>

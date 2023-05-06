@@ -1,13 +1,13 @@
-{{- define "clark/tags" -}}
+{{- define "sonic_theme_clark/tags" -}}
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <title>标签列表 - {{ .blog_title }}</title>
-    {{ template "clark/module/head" . }}
+    {{ template "sonic_theme_clark/module/head" . }}
 </head>
 
-{{ template "clark/module/style" . }}
+{{ template "sonic_theme_clark/module/style" . }}
 
 <style>
     .tags {
@@ -62,7 +62,7 @@
 
 <body>
     <div class="container">
-        {{ template "clark/module/header" .}}
+        {{ template "sonic_theme_clark/module/header" .}}
         <div class="content">
             <div class="posts">
                 <div class="index-content framed">
@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-            {{template "clark/module/footer" .}}
+            {{template "sonic_theme_clark/module/footer" .}}
         </div>
     </div>
 </body>
