@@ -1,0 +1,43 @@
+{{- define "clark/module/post-entry" -}}
+{{range $post:=.posts.Content}}
+<article class="post on-list">
+
+    <h1 class="post-title"><a href="{{$post.FullPath}}">{{$post.Title}}</a></h1>
+    <div class="post-meta">
+        {{ if $post.Topped }}<span class="post-topped">{{ $.settings.topped_alias }}</span>{{ end }}
+        <time class="post-date">
+            {{unix_milli_time_format "2006-01-02 15:04:05" $post.CreateTime}}
+        </time>
+        -
+        <span class="post-word-count"> {{ $post.WordCount }} 字</span>
+        <span class="post-read-time"> {{$post.Visits}} 阅读</span>
+        <span style="display: block; height: 0.5rem;"></span>
+        {{if gt (len $post.Categories) 0 }}
+        <span class="post-tags">
+            {{range $category:=$post.Categories}}
+            <a href="{{$category.FullPath}}" title="{{$category.Name}}">{{$category.Name}}</a>&nbsp;
+            {{end}}
+        </span>
+        {{end}}
+        {{ if gt (len $post.Tags) 0 }}
+        <span class="post-tags">
+            {{range $tag:=$post.Tags}}
+            <a href="{{$tag.FullPath}}" title="{{$tag.Name}}">#{{$tag.Name}}</a>&nbsp;
+            {{end}}
+        </span>
+        {{end}}
+    </div>
+
+    {{ if $post.Thumbnail }}
+    <figure class="post-cover">
+        <img src="{{ $post.Thumbnail }}" alt="{{ $post.Thumbnail }}" />
+    </figure>
+    {{ end }}
+
+    <div class="post-content">
+        {{$post.Summary}}...
+    </div>
+    <div><a class="read-more button" href="{{$post.FullPath}}">{{ $.settings.cat_full_text }}</a></div>
+</article>
+{{end}}
+{{end}}

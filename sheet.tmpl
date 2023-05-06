@@ -1,0 +1,39 @@
+{{- define "clark/sheet" -}}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>{{.sheet.Title}} - {{ .blog_title }}</title>
+    {{ template "clark/module/head" . }}
+</head>
+
+{{ template "clark/module/style" . }}
+
+<body>
+    <div class="container">
+        {{ template "clark/module/header" .}}
+        <div class="content">
+            <article class="post">
+                <h1 class="post-title"><a href="{{ .post.FullPath }}">{{ .sheet.Title }}</a></h1>
+                <div class="post-meta">
+                    <time class="post-date">
+                        创建时间: {{ unix_milli_time_format "2006-01-02 15:04:05" .sheet.CreateTime }}
+                    </time>
+                </div>
+
+                {{ if and .settings.post_thumbnail .post.Thumbnail }}
+                <figure class="post-cover">
+                    <img src="{{ .post.Thumbnail }}" alt="{{ .post.Thumbnail }}" />
+                </figure>
+                {{ end }}
+                <div class="post-content">
+                    {{noescape .sheet.OriginalContent}}
+                </div>
+            </article>
+            {{template "clark/module/footer" .}}
+        </div>
+    </div>
+</body>
+
+</html>
+{{end}}

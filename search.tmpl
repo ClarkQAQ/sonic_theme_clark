@@ -1,0 +1,90 @@
+{{- define "clark/search" -}}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>搜索: {{.tag.Name}} - {{ .blog_title }}</title>
+    {{ template "clark/module/head" .}}
+</head>
+
+{{ template "clark/module/style" .}}
+
+<style>
+    .introduction {
+        text-align: left;
+    }
+
+    .introduction .title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .introduction .subtitle {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+        padding-left: 0.3rem;
+    }
+</style>
+
+<body>
+    <div class="container">
+        {{ template "clark/module/header" .}}
+        <div class="content">
+            <div class="posts">
+                <div class="index-content framed">
+                    <div class="introduction-container" style="display: flex;">
+                        {{if .tag.Thumbnail }}
+                        <div class="avatar">
+                            <img src="{{ .tag.Thumbnail }}" style="border-radius: 1rem;" />
+                        </div>
+                        {{end}}
+
+                        <div class="introduction" style="padding-left: 1rem;">
+                            <!-- <h1 class="title">搜索结果</h1> -->
+                            <!-- <p class="subtitle"></p> -->
+                            <p class="subtitle">{{ .posts.Total }} 篇文章</p>
+                        </div>
+                    </div>
+                </div>
+                {{if .posts.Content}}
+                {{ template "clark/module/post-entry" . }}
+                {{if (gt .posts.Pages 1)}}
+                {{$pagination:=(searchPagination .posts.PageNum .posts.Pages 3)}}
+                <div class="pagination">
+                    <div class="pagination__buttons">
+                        {{if $pagination.HasPrev}}
+                        <span class="button previous">
+                            <a href="{{$pagination.PrevPageFullPath}}">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">上一页</span>
+                            </a>
+                        </span>
+                        {{end}}
+                        {{if $pagination.HasNext}}
+                        <span class="button next">
+                            <a href="{{$pagination.NextPageFullPath}}">
+                                <span class="button__text">下一页</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                        {{end}}
+                    </div>
+                </div>
+                {{end}}
+                {{else}}
+                <div class="">
+                    <h3 class="page-title">没有找到任何东西！</h3>
+                </div>
+                {{end}}
+                
+
+            </div>
+            {{template "clark/module/footer" .}}
+        </div>
+    </div>
+</body>
+
+</html>
+{{end}}

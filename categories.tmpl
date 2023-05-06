@@ -1,0 +1,97 @@
+{{- define "clark/categories" -}}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>分类列表 - {{ .blog_title }}</title>
+    {{ template "clark/module/head" . }}
+</head>
+
+{{ template "clark/module/style" . }}
+
+<style>
+    .categories {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        /* 居中 */
+        margin: 0 auto;
+    }
+
+    .categories span {
+        margin: 0.5rem 0;
+        padding-left: 0.5rem;
+    }
+
+    .categories span a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        color: var(--color);
+        background-color: var(--header);
+        text-decoration: none;
+    }
+
+    .categories span a:hover {
+        background-color: var(--background-secondary);
+    }
+
+    .introduction-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .introduction {
+        text-align: center;
+    }
+
+    .introduction .title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .introduction .subtitle {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+        /* padding-left: 0.3rem; */
+    }
+</style>
+
+<body>
+    <div class="container">
+        {{ template "clark/module/header" .}}
+        <div class="content">
+            <div class="posts">
+                <div class="index-content framed">
+                    <div class="introduction-container">
+                        <div class="introduction">
+                            <h1 class="title">分类列表</h1>
+                            <p class="subtitle">{{ (getCategoryCount) }} 个分类</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: block;height: 1.5rem;"></div>
+                <div class="categories">
+                    {{$categories:=listCategory}}
+                    {{range $category:=$categories}}
+                    <span>
+                        <a href="{{ $category.FullPath }}">
+                            {{ $category.Name }}（{{ $category.PostCount }}）
+                        </a>&nbsp;
+                    </span>
+                    {{end}}
+                </div>
+            </div>
+
+            {{template "clark/module/footer" .}}
+        </div>
+    </div>
+</body>
+
+</html>
+{{ end }}

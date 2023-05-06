@@ -1,0 +1,107 @@
+{{- define "clark/journals" -}}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>{{ .settings.journals_alias }} - {{ .blog_title }}</title>
+    {{ template "clark/module/head" .}}
+</head>
+
+{{ template "clark/module/style" .}}
+
+<style>
+    .introduction {
+        text-align: left;
+    }
+
+    .introduction .title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .introduction .subtitle {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .post-content img {
+        border-radius: 8px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        margin: 25px 0;
+    }
+</style>
+
+<body>
+    <div class="container">
+        {{ template "clark/module/header" .}}
+        <div class="content">
+            <div class="posts">
+                <div class="index-content framed">
+                    <div class="introduction-container" style="display: flex;">
+                        {{if .user.Avatar }}
+                        <div class="avatar">
+                            <img src="{{ .user.Avatar }}" style="border-radius: 1rem;" />
+                        </div>
+                        {{end}}
+
+                        <div class="introduction" style="padding: 1rem;">
+                            <h1 class="title">{{ .user.Nickname }}的{{ .settings.journals_alias }}</h1>
+                            <p class="subtitle">{{ .journals.Total }} 条{{ .settings.journals_alias }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {{ range $journal := .journals.Content }}
+                <article class="post on-list">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            {{unix_milli_time_format "2006-01-02 15:04:05" $journal.CreateTime}}
+                        </time>
+
+                        ({{$journal.ID}})
+                    </div>
+
+                    <div class="post-content">
+                        {{if eq $journal.JournalType 0}}
+                            {{noescape $journal.Content}}
+                        {{else}}
+                            <code>这条{{ $.settings.journals_alias }}已经被藏起来了</code>
+                        {{end}}
+                    </div>
+                </article>
+                {{end}}
+
+
+                {{ if (gt .journals.Pages 1) }}
+                {{ $pagination:=(journalsPagination .journals.PageNum .journals.Pages 3) }}
+                <div class="pagination">
+                    <div class="pagination__buttons">
+                        {{ if $pagination.HasPrev }}
+                        <span class="button previous">
+                            <a href="{{ $pagination.PrevPageFullPath }}">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">上一页</span>
+                            </a>
+                        </span>
+                        {{ end }}
+                        {{ if $pagination.HasNext }}
+                        <span class="button next">
+                            <a href="{{ $pagination.NextPageFullPath }}">
+                                <span class="button__text">下一页</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                        {{ end }}
+                    </div>
+                </div>
+                {{end}}
+            </div>
+            {{template "clark/module/footer" .}}
+        </div>
+    </div>
+</body>
+
+</html>
+{{end}}

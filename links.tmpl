@@ -1,0 +1,92 @@
+{{- define "clark/links" -}}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>{{ .settings.links_alias }} - {{ .blog_title }}</title>
+    {{ template "clark/module/head" . }}
+</head>
+
+{{ template "clark/module/style" . }}
+
+<style>
+    .introduction {
+        text-align: left;
+    }
+
+    .introduction .title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .introduction .subtitle {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .link {
+        padding: 50px;
+        margin: 0 -50px 40px;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+        max-width: 860px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        {{ template "clark/module/header" .}}
+        <div class="content">
+            <div class="posts">
+                {{$links:=listLinks}}
+                <div class="index-content framed">
+                    <div class="introduction-container">
+                        <div class="introduction" style="text-align: center;">
+                            <h1 class="title">{{ .settings.links_alias }}</h1>
+                            {{ if $links }}
+                            <p class="subtitle">{{ len $links }} 条数据</p>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: block;height: 1.5rem;"></div>
+                <div class="links">
+                    {{if $links}}
+                    {{range $link:=$links }}
+                    <div class="index-content framed" style="padding: 25px;">
+                        <div class="introduction-container" style="display: flex;">
+                            {{if $link.Logo }}
+                            <div class="avatar" style="max-width: 3rem;">
+                                <img src="{{ $link.Logo }}" style="min-height: 3rem; min-width: 3rem;" />
+                            </div>
+                            {{end}}
+
+                            <a href="{{ $link.URL }}" target="_blank" style="text-decoration: none;">
+                                <div class="introduction"
+                                    style="padding-left: 1rem; padding-top: 0.2rem; overflow-wrap: anywhere;">
+                                    <h1 class="title" style="font-size: 1.2rem; font-weight: 500;">
+                                        {{ $link.Name }} {{ if $link.Team }}<span
+                                            style="color: var(--text-color); font-size: 1rem;">({{ $link.Team }})</span>{{ end }}
+                                    </h1>
+                                    <p class="subtitle">{{$link.Description}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div style="display: block;height: 0.5rem;"></div>
+                    {{end}}
+                    {{end}}
+                </div>
+            </div>
+
+            {{template "clark/module/footer" .}}
+        </div>
+    </div>
+</body>
+
+</html>
+{{ end }}

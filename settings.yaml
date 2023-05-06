@@ -1,0 +1,70 @@
+settings:
+    label: 设置
+    items:
+        left_title:
+            name: left_title
+            label: 左侧标题
+            type: text
+            default: "[ClarkQAQ@ArchOxO ~]$"
+        down_left_title:
+            name: down_left_title
+            label: 下方左侧标题
+            type: text
+            default: "poweroff"
+        copyright:
+            name: copyright
+            label: 版权信息 (支持 HTML)
+            type: textarea
+            default: >
+                <span>© 2023 Clark - 本博客由 <a href="https://github.com/go-sonic/sonic" target="_blank"
+                        rel="noopener">Sonic</a> 强力驱动</span>
+                <span><a href="https://github.com/panr/hugo-theme-hello-friend" target="_blank">主题来源</a></span>
+        cat_full_text:
+            name: cat_full_text
+            label: 阅读全文文字
+            type: text
+            default: "阅读全文 →"
+        hello_content:
+            name: hello_content
+            label: 首页简介 (支持 HTML)
+            type: textarea
+            default: >
+                <h3>这里是 ClarkQAQ !</h3>
+                <p> 普通的程序员, Linux 桌面窗管用户, 日常语言是 Golang/Python/Lua, 喜欢网安和搞钱... </p>
+        hello_content_switch:
+            name: hello_content_switch
+            label: 首页简介开关
+            type: radio
+            data-type: bool
+            default: true
+            options:
+                - value: true
+                  label: 开启
+                - value: false
+                  label: 关闭
+        post_thumbnail:
+            name: post_thumbnail
+            label: 正文缩略图开关
+            type: radio
+            data-type: bool
+            default: true
+            options:
+                - value: true
+                  label: 开启
+                - value: false
+                  label: 关闭
+        journals_alias:
+            name: journals_alias
+            label: 日志别名
+            type: text
+            default: "碎碎念"
+        links_alias:
+            name: links_alias
+            label: 友链别名
+            type: text
+            default: "友链"
+        topped_alias:
+            name: topped_alias
+            label: 置顶别名
+            type: text
+            default: "[置顶]"

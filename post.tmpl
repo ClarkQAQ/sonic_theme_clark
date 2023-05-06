@@ -1,0 +1,101 @@
+{{- define "clark/post" -}}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>{{ .post.Title }} - {{ .blog_title }}</title>
+    {{ template "clark/module/head" . }}
+</head>
+
+{{ template "clark/module/style" . }}
+
+<style>
+    .post-content img {
+        border-radius: 8px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        margin: 25px 0;
+    }
+</style>
+
+<body>
+    <div class="container">
+        {{ template "clark/module/header" .}}
+        <div class="content">
+            <article class="post">
+                <h1 class="post-title"><a href="{{ .post.FullPath }}">{{ .post.Title }}</a></h1>
+                <div class="post-meta">
+                    <time class="post-date">
+                        创建时间: {{ unix_milli_time_format "2006-01-02 15:04:05" .post.CreateTime }}
+                    </time>
+                    <br />
+                    <time class="post-update-date">
+                        修改时间: {{ unix_milli_time_format "2006-01-02 15:04:05" .post.UpdateTime }}
+                    </time>
+                    <br />
+                    <span class="post-word-count">字数: {{ .post.WordCount }} 字</span>
+                    <span class="post-read-time">阅读数: {{ .post.Visits }} 次</span>
+                    <!-- <span style="display: block; height: 0.5rem;"></span> -->
+                    {{if gt (len .post.Categories) 0 }}
+                    <span style="display: flex;">分类:&nbsp;
+                        <span class="post-tags">
+                            {{range $category:=.post.Categories}}
+                            <a href="{{$category.FullPath}}" title="{{$category.Name}}">{{$category.Name}}</a>&nbsp;
+                            {{end}}
+                        </span>
+                    </span>
+                    {{end}}
+                    {{ if gt (len .post.Tags) 0 }}
+                    <span style="display: flex;">标签:&nbsp;
+                        <span class="post-tags">
+                            {{range $tag:=.post.Tags}}
+                            <a href="{{$tag.FullPath}}" title="{{$tag.Name}}">#{{$tag.Name}}</a>&nbsp;
+                            {{end}}
+                        </span>
+                    </span>
+                    {{end}}
+                </div>
+
+                {{ if and .settings.post_thumbnail .post.Thumbnail }}
+                <figure class="post-cover">
+                    <img src="{{ .post.Thumbnail }}" alt="{{ .post.Thumbnail }}" />
+                </figure>
+                {{ end }}
+
+                <div class="post-content">
+                    {{noescape .post.Content}}
+                </div>
+
+                {{if or .prevPost .nextPost }}
+                <div class="pagination">
+                    <div class="pagination__title">
+                        <span class="pagination__title-h">看看其他吧</span>
+                        <hr />
+                    </div>
+                    <div class="pagination__buttons">
+                        {{if .prevPost}}
+                        <span class="button previous">
+                            <a href="{{.prevPost.FullPath}}" title="{{.prevPost.Title}}">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">{{.prevPost.Title}}</span>
+                            </a>
+                        </span>
+                        {{end}}
+                        {{if .nextPost}}
+                        <span class="button next">
+                            <a href="{{.nextPost.FullPath}}" title="{{.nextPost.Title}}">
+                                <span class="button__text">{{.nextPost.Title}}</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                        {{end}}
+                    </div>
+                </div>
+                {{end}}
+            </article>
+            {{template "clark/module/footer" .}}
+        </div>
+    </div>
+</body>
+
+</html>
+{{end}}

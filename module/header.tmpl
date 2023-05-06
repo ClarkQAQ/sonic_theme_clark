@@ -1,0 +1,56 @@
+{{- define "clark/module/header" -}}
+<header class="header">
+    <span class="header__inner">
+        <a href="/" class="logo" style="text-decoration: none;">
+            <span class="logo__text">{{ .settings.left_title }}</span>
+            <span class="logo__cursor"></span>
+        </a>
+
+        <span class="header__right">
+            <nav class="menu">
+                <ul class="menu__inner menu__inner--desktop">
+                    {{ $menus:=(listMenu)}}
+                    {{range $menu:=$menus}}
+                    {{ if eq $menu.Icon "" }}
+                    <li><a href="{{$menu.URL}}" target="{{$menu.Target}}">{{$menu.Name}}</a></li>
+                    {{end}}
+                    {{end}}
+
+                    <ul class="menu__sub-inner">
+                        <li class="menu__sub-inner-more-trigger">
+                            更多
+                            <span class="menu__sub-inner-more-trigger-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                    class="greater-icon" viewBox="0 0 44 44">
+                                    <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+                                </svg>
+                            </span>
+                        </li>
+                        <ul class="menu__sub-inner-more hidden">
+                            {{ $menus:=(listMenu)}}
+                            {{range $menu:=$menus}}
+                            {{ if ne $menu.Icon "" }}
+                            <li><a href="{{$menu.URL}}" target="{{$menu.Target}}">{{$menu.Name}}</a></li>
+                            {{end}}
+                            {{end}}
+                        </ul>
+                    </ul>
+                </ul>
+
+                <ul class="menu__inner menu__inner--mobile">
+                    {{ $menus:=(listMenu)}}
+                    {{range $menu:=$menus}}
+                    <li><a href="{{$menu.URL}}" target="{{$menu.Target}}">{{$menu.Name}}</a></li>
+                    {{end}}
+                </ul>
+            </nav>
+
+            <span class="menu-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+            </span>
+        </span>
+    </span>
+</header>
+{{ end }}

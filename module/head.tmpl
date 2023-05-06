@@ -1,0 +1,19 @@
+{{- define "clark/module/head" -}}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="renderer" content="webkit" />
+
+<meta name="author" content="{{ .user.Nickname }}" />
+<meta name="keywords" content="{{ .meta_keywords }}" />
+<meta name="description" content="{{ .meta_description }}" />
+
+{{ template "global.head" . }}
+
+<link rel="alternate" type="application/rss+xml" href="{{ .rss_url }}" title="{{.blog_title }}" />
+<link href="{{ .theme_base }}/assets/JetBrainsMono-Medium.woff2?version={{ .theme.Version }}" rel="preload"
+    type="font/woff2" as="font" crossorigin="" />
+<link href="{{ .theme_base }}/assets/main.css?version={{ .theme.Version }}" rel="stylesheet" />
+{{end}}

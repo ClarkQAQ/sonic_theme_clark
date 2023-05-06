@@ -1,0 +1,65 @@
+{{- define "clark/archives" -}}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>归档 - {{ .blog_title }}</title>
+    {{ template "clark/module/head" . }}
+</head>
+
+{{ template "clark/module/style" . }}
+
+<body>
+    <div class="container">
+        {{ template "clark/module/header" .}}
+        <div class="content">
+
+            <div class="posts">
+                <div class="">
+                    <ul>
+                        {{range $archive:=.archives}}
+                        {{range $post:=$archive.Posts}}
+                        <li>
+                            <span class="date">{{unix_milli_time_format "2006-01-02" $post.CreateTime}}</span>
+                            <a href="{{$post.FullPath}}" title="{{$post.Title}}">{{$post.Title}}</a>
+                        </li>
+                        {{end}}
+                        {{end}}
+                    </ul>
+                </div>
+
+                <span style="display: block; height: 1rem;"></span>
+
+
+                {{if (gt .posts.Pages 1)}}
+                {{$pagination:=(archivesPagination .posts.PageNum .posts.Pages 3)}}
+                <div class="pagination">
+                    <div class="pagination__buttons">
+                        {{if $pagination.HasPrev}}
+                        <span class="button previous">
+                            <a href="{{$pagination.PrevPageFullPath}}">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">上一页</span>
+                            </a>
+                        </span>
+                        {{end}}
+                        {{if $pagination.HasNext}}
+                        <span class="button next">
+                            <a href="{{$pagination.NextPageFullPath}}">
+                                <span class="button__text">下一页</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                        {{end}}
+                    </div>
+                </div>
+                {{end}}
+            </div>
+
+            {{template "clark/module/footer" .}}
+        </div>
+    </div>
+</body>
+
+</html>
+{{end}}
