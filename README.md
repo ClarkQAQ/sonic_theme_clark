@@ -39,7 +39,7 @@
 
 ##### 方法二
 
-1. [点击](https://github.com/hooxuu/sonic-theme-Journal/archive/master.zip)下载最新的版本。
+1. [点击](https://github.com/ClarkQAQ/sonic_theme_clark/archive/master.zip)下载最新的版本。
 2. 进入后台 -> 外观 -> 主题。
 3. 找到需要更新的主题，点击主题下方的 `更多` 按钮。
 4. 点击 `从主题包更新`，选择下载好的主题包（zip）即可。
